@@ -1,0 +1,108 @@
+/* Hero Section Styles */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: var(--space-xl) 0;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-primary) 10%, var(--color-background)) 0%,
+    var(--color-background) 100%
+  );
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-lg);
+}
+
+.hero-text {
+  max-width: 60ch;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
+  line-height: 1.2;
+  margin-bottom: var(--space-md);
+  background: linear-gradient(135deg, var(--color-primary), color-mix(in srgb, var(--color-primary) 70%, #fff));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.highlight {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.25rem, 2vw + 0.5rem, 1.75rem);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+  line-height: 1.6;
+}
+
+.cta-container {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cta-button {
+  padding: 1rem 2rem;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast);
+  cursor: pointer;
+}
+
+.cta-button.primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.cta-button.secondary {
+  background-color: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+@media (hover: hover) {
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--color-shadow);
+  }
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: var(--space-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: var(--space-lg) 0;
+  }
+
+  .cta-container {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .cta-button {
+    width: 100%;
+    text-align: center;
+  }
+}

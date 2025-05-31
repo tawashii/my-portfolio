@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:;" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    
+    <!-- SEO Meta Tags -->
+    <title>tawashi - テクニカルライター/QAエンジニア ポートフォリオ</title>
+    <meta name="description" content="テクニカルライティング、QA、データ分析の経験を活かしたエンジニアを目指すtawashiのポートフォリオサイトです。" />
+    <meta name="keywords" content="ポートフォリオ, テクニカルライター, QAエンジニア, データ分析, Web開発" />
+    <link rel="canonical" href="https://tawashii.github.io/portfolio/" />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tawashii.github.io/portfolio/" />
+    <meta property="og:title" content="tawashi - テクニカルライター/QAエンジニア ポートフォリオ" />
+    <meta property="og:description" content="テクニカルライティング、QA、データ分析の経験を活かしたエンジニアを目指すtawashiのポートフォリオサイトです。" />
+    <meta property="og:image" content="https://tawashii.github.io/portfolio/og-image.jpg" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@tawashii_" />
+    
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "tawashi",
+        "url": "https://tawashii.github.io/portfolio/",
+        "sameAs": [
+          "https://github.com/tawashii",
+          "https://twitter.com/tawashii_",
+          "https://zenn.dev/taa_wash1"
+        ],
+        "jobTitle": "テクニカルライター/QAエンジニア",
+        "description": "テクニカルライティング、QA、データ分析の経験を活かしたエンジニアを目指しています。"
+      }
+    </script>
+    
+    <!-- Resource Hints -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Preload Critical Fonts -->
+    <link 
+      rel="preload" 
+      href="/fonts/Inter-var.woff2" 
+      as="font" 
+      type="font/woff2" 
+      crossorigin
+    />
+    
+    <!-- Font Loading -->
+    <link 
+      rel="stylesheet" 
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="tawashi - Portfolio" />
+    <meta property="og:description" content="テクニカルライティング、QA、データ分析の経験を活かしたエンジニアを目指しています。" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- Performance Metrics -->
+    <script>
+      // First Input Delay測定
+      let firstInputDelay = 0;
+      new PerformanceObserver((entryList) => {
+        for (const entry of entryList.getEntries()) {
+          if (!firstInputDelay) {
+            firstInputDelay = entry.processingStart - entry.startTime;
+          }
+        }
+      }).observe({ type: 'first-input', buffered: true });
+
+      // Cumulative Layout Shift測定
+      let cumulativeLayoutShift = 0;
+      new PerformanceObserver((entryList) => {
+        for (const entry of entryList.getEntries()) {
+          if (!entry.hadRecentInput) {
+            cumulativeLayoutShift += entry.value;
+          }
+        }
+      }).observe({ type: 'layout-shift', buffered: true });
+    </script>
+    
+    <!-- Preload fonts -->
+    <link rel="preload" href="/fonts/Inter-var.woff2" as="font" type="font/woff2" crossorigin />
+    
+    <!-- Critical CSS -->
+    <style>
+      :root {
+        --primary-color: #2563eb;
+        --text-color: #1f2937;
+        --bg-color: #ffffff;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --primary-color: #3b82f6;
+          --text-color: #f3f4f6;
+          --bg-color: #111827;
+        }
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, sans-serif;
+        background: var(--bg-color);
+        color: var(--text-color);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main" class="skip-to-content">メインコンテンツへスキップ</a>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

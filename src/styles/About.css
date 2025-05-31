@@ -1,0 +1,60 @@
+/* About Section Styles */
+.about-content {
+  max-width: 80ch;
+  margin: 0 auto;
+  padding: var(--space-xl) 0;
+  text-align: center;
+}
+
+.about-title {
+  font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
+  color: var(--color-primary);
+  margin-bottom: var(--space-xl);
+  font-weight: 700;
+}
+
+.roles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: var(--space-lg);
+}
+
+.role-card {
+  background: var(--bg-secondary);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .role-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.role-title {
+  font-size: var(--font-size-lg);
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+.role-description {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .roles-grid {
+    gap: var(--space-md);
+  }
+
+  .role-card {
+    padding: var(--space-md);
+  }
+}
