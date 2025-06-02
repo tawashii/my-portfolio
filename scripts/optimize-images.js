@@ -1,11 +1,29 @@
-import sharp from 'sharp';
-import { glob } from 'glob';
-import path from 'path';
-import fs from 'fs/promises';
+// Image optimization script (optional)
+// Install sharp package: npm install sharp
 
 async function optimizeImages() {
   try {
+    // Check if sharp is available
+    let sharp;
+    try {
+      sharp = await import('sharp');
+      sharp = sharp.default;
+    } catch (error) {
+      console.log('Sharp package not found. Skipping image optimization.');
+      console.log('To enable image optimization, run: npm install sharp');
+      return;
+    }
+
+    const { glob } = await import('glob');
+    const path = await import('path');
+    const fs = await import('fs/promises');
+    
     const images = await glob('dist/**/*.{jpg,jpeg,png,webp}');
+    
+    if (images.length === 0) {
+      console.log('No images found to optimize.');
+      return;
+    }
     
     for (const image of images) {
       const imageBuffer = await fs.readFile(image);

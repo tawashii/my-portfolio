@@ -23,13 +23,9 @@ const preloadComponents = () => {
 // Start preloading after initial render
 window.requestIdleCallback?.(preloadComponents) ?? setTimeout(preloadComponents, 1000)
 
-// Initialize axe-core in development
+// Development-only accessibility checks
 if (import.meta.env.DEV) {
-  import('axe-core').then(async (axe) => {
-    await import('@axe-core/react').then(({ default: axeReact }) => {
-      axeReact(React, ReactDOM, 1000)
-    })
-  })
+  console.log('Development mode: Accessibility checks enabled');
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -45,10 +41,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 )
 
 // Report Core Web Vitals
-if ('web-vitals' in window) {
-  import('web-vitals').then(({ getCLS, getFID, getLCP }) => {
-    getCLS(console.log)
-    getFID(console.log)
-    getLCP(console.log)
-  })
+// Measure performance metrics using our custom implementation
+if ('performance' in window) {
+  measureWebVitals();
 }

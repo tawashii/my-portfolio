@@ -1,16 +1,14 @@
 import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
 import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
 import reactJsxRuntime from 'eslint-plugin-react/configs/jsx-runtime.js';
 import a11y from 'eslint-plugin-jsx-a11y';
 
 export default [
   eslint.configs.recommended,
-  ...tseslint.configs.recommended,
   reactRecommended,
   reactJsxRuntime,
   {
-    files: ['**/*.{js,jsx,ts,tsx}'],
+    files: ['**/*.{js,jsx}'],
     plugins: {
       'jsx-a11y': a11y,
     },

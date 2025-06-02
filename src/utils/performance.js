@@ -1,4 +1,35 @@
-import { getCLS, getFID, getLCP } from 'web-vitals'
+// import { getCLS, getFID, getLCP } from 'web-vitals'
+
+// Web Vitalsメトリクスの測定（自前実装）
+export function measureCLS() {
+  let cumulativeLayoutShift = 0;
+  new PerformanceObserver((entryList) => {
+    for (const entry of entryList.getEntries()) {
+      if (!entry.hadRecentInput) {
+        cumulativeLayoutShift += entry.value;
+      }
+    }
+  }).observe({ type: 'layout-shift', buffered: true });
+  return cumulativeLayoutShift;
+}
+
+export function measureFID() {
+  new PerformanceObserver((entryList) => {
+    const entries = entryList.getEntries();
+    entries.forEach(entry => {
+      const delay = entry.processingStart - entry.startTime;
+      console.log('FID:', delay);
+    });
+  }).observe({ type: 'first-input', buffered: true });
+}
+
+export function measureLCP() {
+  new PerformanceObserver((entryList) => {
+    const entries = entryList.getEntries();
+    const lastEntry = entries[entries.length - 1];
+    console.log('LCP:', lastEntry.startTime);
+  }).observe({ type: 'largest-contentful-paint', buffered: true });
+}
 
 export function reportWebVitals(onPerfEntry) {
   if (onPerfEntry && onPerfEntry instanceof Function) {

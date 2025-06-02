@@ -1,7 +1,7 @@
 import { describe, test, expect, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import WorkExperience from '../WorkExperience';
-import '@testing-library/jest-dom/vitest';
+import '@testing-library/jest-dom';
 
 describe('WorkExperience Component', () => {
   beforeEach(() => {

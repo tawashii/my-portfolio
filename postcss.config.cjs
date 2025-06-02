@@ -6,7 +6,6 @@ module.exports = {
       features: {
         'nesting-rules': true,
         'custom-properties': true,
-        'relative-color-syntax': true,
       }
     }),
     require('cssnano')({
@@ -14,12 +13,6 @@ module.exports = {
         discardComments: { removeAll: true },
         normalizeWhitespace: false,
       }]
-    }),
-    process.env.NODE_ENV === 'production' &&
-      require('@fullhuman/postcss-purgecss')({
-        content: ['./src/**/*.{js,jsx}', './index.html'],
-        defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
-        safelist: ['dark', /^swiper-/]
-      })
-  ].filter(Boolean)
+    })
+  ]
 }

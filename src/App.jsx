@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import './styles/About.css'
 import Header from './components/Header'
@@ -18,7 +18,7 @@ function App() {
   }
 
   // 初期ロード時にLocalStorageから設定を読み込む
-  useState(() => {
+  useEffect(() => {
     const savedDarkMode = localStorage.getItem('darkMode')
     if (savedDarkMode !== null) {
       setDarkMode(savedDarkMode === 'true')

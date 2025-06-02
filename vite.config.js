@@ -3,22 +3,12 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [
-    react(),
-    {
-      name: 'html-transform',
-      transformIndexHtml(html) {
-        // Critical CSSをインライン化
-        return html.replace(
-          '</head>',
-          `<style id="critical">${criticalCSS}</style></head>`
-        )
-      }
-    }
+    react()
   ],
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['./src/test/setup.ts'],
+    setupFiles: ['./src/test/setup.js'],
     include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     coverage: {
       reporter: ['text', 'json', 'html'],
@@ -29,6 +19,7 @@ export default defineConfig({
     },
   },
   build: {
+    target: 'es2015',
     cssCodeSplit: true,
     modulePreload: true,
     sourcemap: false,
@@ -51,19 +42,6 @@ export default defineConfig({
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
       },
     },
-  build: {
-    target: 'es2015',
-    minify: 'terser',
-    cssMinify: true,
-    cssCodeSplit: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          utils: ['react-scroll', 'framer-motion'],
-        },
-      },
-    },
   },
   css: {
     devSourcemap: true,
@@ -71,7 +49,7 @@ export default defineConfig({
       scopeBehaviour: 'local',
       localsConvention: 'camelCase',
     },
-    postcss: './postcss.config.js',
+    postcss: './postcss.config.cjs',
   },
   server: {
     port: 3000,
@@ -80,7 +58,7 @@ export default defineConfig({
     strictPort: true,
   },
   preview: {
-    port: 3000,
+    port: 4173,
     host: '0.0.0.0',
     open: true,
     strictPort: true,
